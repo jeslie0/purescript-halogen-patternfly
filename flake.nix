@@ -7,7 +7,6 @@
     nix-filter.url = "github:numtide/nix-filter";
     ps-overlay.url = "github:thomashoneyman/purescript-overlay";
     mkSpagoDerivation.url = "github:jeslie0/mkSpagoDerivation";
-    easy-purescript-nix.url = "github:justinwoo/easy-purescript-nix";
   };
 
   outputs = { self, nixpkgs, flake-utils, nix-filter, ps-overlay, mkSpagoDerivation }:
@@ -58,6 +57,7 @@
             purs = pkgs.purs-unstable;
             nativeBuildInputs = [ pkgs.esbuild pkgs.purs-backend-es pkgs.sqlite ];
             patches = [ ./patches/backend.patch ];
+            # installPhase = "mkdir $out; cp spago.yaml $out";
             buildPhase = "spago build && purs-backend-es bundle-app --no-build --minify --to=main.min.js";
             installPhase = "mkdir $out; cp -r * $out; cp -r .spago $out";
           };

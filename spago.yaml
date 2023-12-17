@@ -9,10 +9,6 @@ package:
     main: Test.Main
     dependencies: []
 workspace:
-  # backend:
-  #   cmd: "purs-backend-es"
-  #   args:
-  #     - "build"
   package_set:
     registry: 43.3.0
   extra_packages: {}

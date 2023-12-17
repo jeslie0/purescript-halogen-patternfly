@@ -1,0 +1,15 @@
+diff --git a/spago.yaml b/spago.yaml
+index 241929a..3bb69dd 100644
+--- a/spago.yaml
++++ b/spago.yaml
+@@ -9,6 +9,10 @@ package:
+     main: Test.Main
+     dependencies: []
+ workspace:
++  backend:
++    cmd: "purs-backend-es"
++    args:
++      - "build"
+   package_set:
+     registry: 43.3.0
+   extra_packages: {}

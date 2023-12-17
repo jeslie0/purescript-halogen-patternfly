@@ -1,0 +1,13 @@
+result
+bower_components/
+node_modules/
+.pulp-cache/
+output/
+output-es/
+generated-docs/
+.direnv
+.psc-package/
+.psc*
+.purs*
+.psa*
+.spago

@@ -79,7 +79,7 @@
           };
 
           devShell = pkgs.mkShell {
-            inputsFrom = [ self.packages.${system}.default ]; # Include build inputs from packages in
+            inputsFrom = [ self.packages.${system}.ps-project ]; # Include build inputs from packages in
             # this list
             packages = with pkgs;
               [ watchexec

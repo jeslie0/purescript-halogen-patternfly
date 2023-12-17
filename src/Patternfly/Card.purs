@@ -2,7 +2,7 @@ module Patternfly.Card (card, header, body, footer, title, BodyOptions) where
 
 import Prelude
 
-import Properties (buildOptions, PFProp)
+import Properties (buildOptions)
 
 import DOM.HTML.Indexed (HTMLdiv)
 import Halogen.HTML (HTML, IProp)
@@ -10,7 +10,7 @@ import Halogen.HTML as HH
 import Halogen as H
 import Halogen.HTML.Properties as HP
 import Web.HTML.Common (ClassName(..))
-
+import Helper (PFProp)
 
 classNames =
   { card: "pf-v5-c-card"
@@ -20,7 +20,6 @@ classNames =
   , cardLarge: "pf-m-display-lg"
   , cardFullHeight: "pf-m-full-height"
   , cardPlain: "pf-m-plain"
-
 
   , title: "pf-v5-c-card__title"
   , titleText: "pf-v5-c-card__title-text"
@@ -40,8 +39,6 @@ type CardOptions =
   , isPlain :: Boolean
   )
 
-
-
 initialCardOptions :: Record CardOptions
 initialCardOptions =
   { isCompact: false
@@ -52,17 +49,13 @@ initialCardOptions =
   , isPlain: false
   }
 
-
-
 makeClassNameFromBool :: String -> Boolean -> H.ClassName
 makeClassNameFromBool str bool =
   H.ClassName
-  if bool
-  then  str
-  else ""
+    if bool then str
+    else ""
 
-
-card :: forall w i . Array (PFProp CardOptions) -> HH.Node HTMLdiv w i
+card :: forall w i. Array (PFProp CardOptions) -> HH.Node HTMLdiv w i
 card conf attr =
   let
     options =
@@ -72,61 +65,57 @@ card conf attr =
       makeClassNameFromBool classNames.cardCompact options.isCompact
 
     flatClass =
-        makeClassNameFromBool classNames.cardFlat options.isFlat
+      makeClassNameFromBool classNames.cardFlat options.isFlat
 
     largeClass =
-        makeClassNameFromBool classNames.cardLarge options.isLarge
+      makeClassNameFromBool classNames.cardLarge options.isLarge
 
     roundedClass =
-        makeClassNameFromBool classNames.cardRounded options.isRounded
+      makeClassNameFromBool classNames.cardRounded options.isRounded
 
     fullHeightClass =
-        makeClassNameFromBool classNames.cardFullHeight options.isFullHeight
+      makeClassNameFromBool classNames.cardFullHeight options.isFullHeight
 
     plainClass =
-        makeClassNameFromBool classNames.cardPlain options.isPlain
-in
-  HH.div (attr <> [HP.classes [ClassName classNames.card, compactClass, flatClass, largeClass, roundedClass, fullHeightClass, plainClass]])
+      makeClassNameFromBool classNames.cardPlain options.isPlain
+  in
+    HH.div (attr <> [ HP.classes [ ClassName classNames.card, compactClass, flatClass, largeClass, roundedClass, fullHeightClass, plainClass ] ])
 
-
-
-title :: forall w i r25 i26 .
-  (Array (IProp ( class :: String | r25) i26) -> Array (HTML w i) -> HTML w i)
-  -> String -> HTML w i
-title elem string  =
+title
+  :: forall w i r25 i26
+   . (Array (IProp (class :: String | r25) i26) -> Array (HTML w i) -> HTML w i)
+  -> String
+  -> HTML w i
+title elem string =
   HH.div
-  [ HP.class_ (ClassName classNames.title) ]
-  [ elem
-    [HP.class_ (ClassName classNames.titleText)]
-    [HH.text string]
-  ]
+    [ HP.class_ (ClassName classNames.title) ]
+    [ elem
+        [ HP.class_ (ClassName classNames.titleText) ]
+        [ HH.text string ]
+    ]
 
-header :: forall w i . HH.Node HTMLdiv w i
+header :: forall w i. HH.Node HTMLdiv w i
 header attr =
-  HH.div (attr <> [HP.class_ (ClassName classNames.header)])
-
+  HH.div (attr <> [ HP.class_ (ClassName classNames.header) ])
 
 type BodyOptions =
-  ( isFilled:: Boolean )
+  (isFilled :: Boolean)
 
 initialBodyOptions :: Record BodyOptions
 initialBodyOptions =
   { isFilled: true }
 
-
-body :: forall w i . Array (PFProp BodyOptions) -> HH.Node HTMLdiv w i
+body :: forall w i. Array (PFProp BodyOptions) -> HH.Node HTMLdiv w i
 body arr attr =
   let
     bodyOptions =
       buildOptions arr initialBodyOptions
 
     isFilledClass =
-        ClassName $ if bodyOptions.isFilled then "" else classNames.bodyNoFill
-   in
-   HH.div $ attr <> [HP.classes [isFilledClass, ClassName classNames.body]]
+      ClassName $ if bodyOptions.isFilled then "" else classNames.bodyNoFill
+  in
+    HH.div $ attr <> [ HP.classes [ isFilledClass, ClassName classNames.body ] ]
 
-
-footer :: forall w i . HH.Node HTMLdiv w i
+footer :: forall w i. HH.Node HTMLdiv w i
 footer attr =
-  HH.div (attr <> [HP.class_ (ClassName classNames.footer)])
-
+  HH.div (attr <> [ HP.class_ (ClassName classNames.footer) ])

@@ -7,7 +7,8 @@ import Data.Maybe (Maybe(..))
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
-import Properties (buildOptions, PFProp)
+import Properties (buildOptions)
+import Helper (PFProp)
 
 classNames =
   { grid: "pf-v5-l-grid"

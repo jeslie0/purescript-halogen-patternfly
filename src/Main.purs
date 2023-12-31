@@ -12,6 +12,8 @@ import Halogen.HTML.Properties as HP
 import Halogen.VDom.Driver (runUI)
 import Patternfly.Card as Card
 import Patternfly.Grid as Grid
+import Patternfly.Icons.BarsIcon (barsIcon)
+import Patternfly.Masthead as Masthead
 import Patternfly.Page as Page
 import Prim.Boolean (True, False)
 import Properties as P
@@ -33,11 +35,11 @@ component =
 -- | MODEL
 
 type Model =
-  { isSidebarOpen :: Boolean}
+  { isSidebarOpen :: Boolean }
 
 initialState :: forall input. input -> Model
 initialState _ =
-  { isSidebarOpen: true}
+  { isSidebarOpen: true }
 
 -- | UPDATE
 
@@ -48,15 +50,22 @@ handleAction :: forall output m. MonadEffect m => Action -> H.HalogenM Model Act
 handleAction action =
   case action of
     ToggleSidebar -> do
-      H.modify_ $ \model -> model { isSidebarOpen = not model.isSidebarOpen}
+      H.modify_ $ \model -> model { isSidebarOpen = not model.isSidebarOpen }
 
 -- | VIEW
 
 render :: forall m. Model -> H.ComponentHTML Action () m
 render model =
   Page.page
-    [ P.sidebar $ Page.sidebar [ P.isOpen model.isSidebarOpen ] [] [ Page.sidebarBody [] [ HH.text "THis is the sidebar" ] ]
-    , P.header $ HH.button [HE.onClick (const ToggleSidebar)] [HH.text "toggle sidebar"]
+    [ P.sidebar $ Page.sidebar [ P.isOpen model.isSidebarOpen ] [] [ Page.sidebarBody [ P.usePageInsets true ] [] [ HH.text "This is the sidebar" ] ]
+    , P.header $
+        Masthead.masthead
+          []
+          []
+          [ Masthead.mastheadToggle [] [] [ HH.button [ HE.onClick (const ToggleSidebar), HP.classes [ H.ClassName "pf-v5-c-button", H.ClassName "pf-m-plain" ] ] [ barsIcon ] ]
+          , Masthead.mastheadMain [] [] [ Masthead.mastheadBrand [] [] [ HH.text "Logo" ] ]
+          , Masthead.mastheadContent [] [] [ HH.span [] [ HH.text "Content" ] ]
+          ]
     ]
     []
     [ Page.pageSection

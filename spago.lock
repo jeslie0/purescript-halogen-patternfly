@@ -7,7 +7,9 @@ workspace:
         - console
         - effect
         - halogen
+        - halogen-svg-elems
         - prelude
+        - psci-support
       test_dependencies: []
   package_set:
     address:
@@ -901,6 +903,15 @@ packages:
         - refs
         - safe-coerce
         - unsafe-reference
+  halogen-svg-elems:
+    needed_by:
+      - patternfly-purescript
+    package:
+      type: registry
+      version: 8.0.0
+      integrity: sha256-NtZ30NoNyadVEsRcdY0zvm2yyahxUTgpioDNVz5gEIA=
+      dependencies:
+        - halogen
   halogen-vdom:
     needed_by:
       - patternfly-purescript
@@ -1169,6 +1180,17 @@ packages:
         - newtype
         - prelude
         - tuples
+  psci-support:
+    needed_by:
+      - patternfly-purescript
+    package:
+      type: registry
+      version: 6.0.0
+      integrity: sha256-C6ql4P9TEP06hft/1Z5QumPA4yARR4VIxDdhmL1EO+Y=
+      dependencies:
+        - console
+        - effect
+        - prelude
   refs:
     needed_by:
       - patternfly-purescript

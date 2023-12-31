@@ -22,6 +22,8 @@ classNames =
   , pageSidebarOpen: ClassName "pf-m-expanded"
   , pageSidebarClosed: ClassName "pf-m-collapsed"
   , pageSidebarBody: ClassName "pf-v5-c-page__sidebar-body"
+  , pageInsets: ClassName "pf-m-page-insets"
+  , isFilled: ClassName "pf-m-fill"
   }
 
 type PageOptions :: Type -> Type -> Row Type
@@ -135,6 +137,29 @@ sidebar options attr children =
 
 -- Sidebar body
 
-sidebarBody :: forall w i . HH.Node HTMLdiv w i
-sidebarBody attr children =
-  HH.div ([class_ classNames.pageSidebarBody] <> attr) children
+
+type SidebarBodyOptions :: Row Type
+type SidebarBodyOptions =
+  ( isFilled :: Boolean
+  , usePageInsets :: Boolean
+  )
+
+initialSidebarBodyOptions :: Record SidebarBodyOptions
+initialSidebarBodyOptions =
+  { isFilled: true
+  , usePageInsets: false}
+
+sidebarBody :: forall w i . Array (PFProp SidebarBodyOptions) -> HH.Node HTMLdiv w i
+sidebarBody options attr children =
+  let
+    fullOptions =
+      buildOptionsST options initialSidebarBodyOptions
+
+    filledClass =
+      if fullOptions.isFilled then classNames.isFilled else ClassName ""
+
+    insetsClass =
+      if fullOptions.usePageInsets then classNames.pageInsets else ClassName ""
+
+  in
+  HH.div ([classes [classNames.pageSidebarBody, filledClass, insetsClass]] <> attr) children

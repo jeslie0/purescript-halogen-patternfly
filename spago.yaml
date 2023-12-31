@@ -4,7 +4,9 @@ package:
     - console
     - effect
     - halogen
+    - halogen-svg-elems
     - prelude
+    - psci-support
   test:
     main: Test.Main
     dependencies: []

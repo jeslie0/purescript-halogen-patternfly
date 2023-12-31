@@ -1,4 +1,4 @@
-module Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen) where
+module Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets) where
 
 import Prelude
 
@@ -68,3 +68,7 @@ pageSectionVariant var =
 isOpen :: forall r . Boolean -> PFProp (isOpen :: Boolean | r)
 isOpen bool =
   PFProp (\conf -> conf { isOpen = bool })
+
+usePageInsets :: forall r . Boolean -> PFProp (usePageInsets :: Boolean | r)
+usePageInsets bool =
+  PFProp (\conf -> conf { usePageInsets = bool })

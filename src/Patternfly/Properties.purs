@@ -1,10 +1,11 @@
-module Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets) where
+module Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize) where
 
 import Prelude
 
 import Control.Monad.ST (run, foreach)
 import Control.Monad.ST.Ref (modify, new, read)
 import Patternfly.Page (PageSectionVariant)
+import Patternfly.Button as Button
 import Helper (PFProp(..))
 import Halogen.HTML as HH
 import Data.Maybe (Maybe(..))
@@ -72,3 +73,30 @@ isOpen bool =
 usePageInsets :: forall r . Boolean -> PFProp (usePageInsets :: Boolean | r)
 usePageInsets bool =
   PFProp (\conf -> conf { usePageInsets = bool })
+
+
+-- * Button
+
+useVariant :: forall r . Button.Variant -> PFProp (variant :: Button.Variant | r)
+useVariant var =
+  PFProp (\conf -> conf { variant = var })
+
+isDisabled :: forall r . Boolean -> PFProp (isDisabled :: Boolean | r)
+isDisabled bool =
+  PFProp (\conf -> conf { isDisabled = bool })
+
+isDanger :: forall r . Boolean -> PFProp (isDanger :: Boolean | r)
+isDanger bool =
+  PFProp (\conf -> conf { isDanger = bool })
+
+isBlock :: forall r . Boolean -> PFProp (isBlock :: Boolean | r)
+isBlock bool =
+  PFProp (\conf -> conf { isBlock = bool })
+
+isInline :: forall r . Boolean -> PFProp (isBlock :: Boolean | r)
+isInline bool =
+  PFProp (\conf -> conf { isBlock = bool })
+
+useSize :: forall r . Button.Size -> PFProp (size :: Maybe Button.Size | r)
+useSize size =
+  PFProp (\conf -> conf { size = Just size })

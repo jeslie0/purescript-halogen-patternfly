@@ -15,6 +15,7 @@ import Patternfly.Grid as Grid
 import Patternfly.Icons.BarsIcon (barsIcon)
 import Patternfly.Masthead as Masthead
 import Patternfly.Page as Page
+import Patternfly.Button as Button
 import Prim.Boolean (True, False)
 import Properties as P
 
@@ -35,22 +36,40 @@ component =
 -- | MODEL
 
 type Model =
-  { isSidebarOpen :: Boolean }
+  { isSidebarOpen :: Boolean
+  , buttonVariant :: Button.Variant
+  }
 
 initialState :: forall input. input -> Model
 initialState _ =
-  { isSidebarOpen: true }
+  { isSidebarOpen: false
+  , buttonVariant: Button.Primary
+  }
 
 -- | UPDATE
 
-data Action =
-  ToggleSidebar
+data Action
+  = ToggleSidebar
+  | ChangeVariant
 
 handleAction :: forall output m. MonadEffect m => Action -> H.HalogenM Model Action () output m Unit
 handleAction action =
   case action of
     ToggleSidebar -> do
       H.modify_ $ \model -> model { isSidebarOpen = not model.isSidebarOpen }
+
+    ChangeVariant -> do
+      H.modify_ $ \model -> model
+        { buttonVariant = case model.buttonVariant of
+            Button.Primary -> Button.Secondary
+            Button.Secondary -> Button.Tertiary
+            Button.Tertiary -> Button.Danger
+            Button.Danger -> Button.Warning
+            Button.Warning -> Button.Link
+            Button.Link -> Button.Plain
+            Button.Plain -> Button.Control
+            Button.Control -> Button.Primary
+        }
 
 -- | VIEW
 
@@ -83,7 +102,12 @@ render model =
     , Page.pageSection
         [ P.pageSectionVariant Page.Default ]
         []
-        [ HH.text "HELLO" ]
+        [ Button.button
+            [ P.useVariant model.buttonVariant
+            , P.useSize Button.Small ]
+            [ HE.onClick $ const ChangeVariant ]
+            [ HH.text "hi" ]
+        ]
 
     -- [ Card.card [ P.isFullHeight true ]
     --     []

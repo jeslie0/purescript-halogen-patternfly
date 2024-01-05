@@ -2,20 +2,25 @@ module Main where
 
 import Prelude
 
+import Data.Maybe (Maybe(..))
 import Effect (Effect)
+import Effect.Aff as Aff
+import Control.Monad.Rec.Class (forever)
+import Effect.Aff.Class (class MonadAff)
 import Effect.Class (class MonadEffect)
 import Halogen as H
 import Halogen.Aff as HA
 import Halogen.HTML as HH
 import Halogen.HTML.Events as HE
 import Halogen.HTML.Properties as HP
+import Halogen.Subscription as HS
 import Halogen.VDom.Driver (runUI)
+import Patternfly.Button as Button
 import Patternfly.Card as Card
 import Patternfly.Grid as Grid
 import Patternfly.Icons.BarsIcon (barsIcon)
 import Patternfly.Masthead as Masthead
 import Patternfly.Page as Page
-import Patternfly.Button as Button
 import Prim.Boolean (True, False)
 import Properties as P
 
@@ -25,12 +30,15 @@ main =
     body <- HA.awaitBody
     runUI component unit body
 
-component :: forall query input output m. MonadEffect m => H.Component query input output m
+component :: forall query input output m. MonadAff m => H.Component query input output m
 component =
   H.mkComponent
     { initialState
     , render: HH.lazy render
-    , eval: H.mkEval $ H.defaultEval { handleAction = handleAction }
+    , eval: H.mkEval $ H.defaultEval
+      { handleAction = handleAction
+      , initialize =  Just Init
+      }
     }
 
 -- | MODEL
@@ -48,11 +56,21 @@ initialState _ =
 
 -- | UPDATE
 
+timer :: forall m a. MonadAff m => a -> m (HS.Emitter a)
+timer val = do
+  { emitter, listener } <- H.liftEffect HS.create
+  _ <- H.liftAff $ Aff.forkAff $ forever do
+    Aff.delay $ Aff.Milliseconds 1000.0
+    H.liftEffect $ HS.notify listener val
+  pure emitter
+
+
 data Action
   = ToggleSidebar
   | ChangeVariant
+  | Init
 
-handleAction :: forall output m. MonadEffect m => Action -> H.HalogenM Model Action () output m Unit
+handleAction :: forall output m. MonadAff m => Action -> H.HalogenM Model Action () output m Unit
 handleAction action =
   case action of
     ToggleSidebar -> do
@@ -70,6 +88,10 @@ handleAction action =
             Button.Plain -> Button.Control
             Button.Control -> Button.Primary
         }
+
+    Init -> do
+        _ <- H.subscribe =<< timer ChangeVariant
+        pure unit
 
 -- | VIEW
 
@@ -104,7 +126,9 @@ render model =
         []
         [ Button.button
             [ P.useVariant model.buttonVariant
-            , P.useSize Button.Small ]
+            , P.useSize Button.Small
+            , P.isDanger true
+            ]
             [ HE.onClick $ const ChangeVariant ]
             [ HH.text "hi" ]
         ]

@@ -92,7 +92,7 @@ button options attr =
       else { disabledClass: ClassName "", disabledAttr: [ HP.disabled false ] }
 
     isDangerAttr =
-      if fullOptions.isDanger then classNames.danger else ClassName ""
+      if fullOptions.isDanger && (fullOptions.variant == Secondary || fullOptions.variant == Link) then classNames.danger else ClassName ""
 
     isBlockAttr =
       if fullOptions.isBlock then classNames.block else ClassName ""

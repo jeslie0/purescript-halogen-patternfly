@@ -1,16 +1,20 @@
 workspace:
   packages:
-    patternfly-purescript:
+    halogen-patternfly:
       path: ./
       needed_by: []
       dependencies:
+        - dom-indexed: ">=11.0.0 <13.0.0"
+        - halogen: ">=7.0.0 <8.0.0"
+        - halogen-svg-elems: ">=8.0.0 <9.0.0"
+        - maybe: ">=6.0.0 <7.0.0"
+        - prelude: ">=6.0.1 <7.0.0"
+        - st: ">=6.2.0 <7.0.0"
+        - web-html: ">=4.1.0 <5.0.0"
+      test_dependencies:
         - console
         - effect
-        - halogen
-        - halogen-svg-elems
-        - prelude
         - psci-support
-      test_dependencies: []
   package_set:
     address:
       registry: 43.3.0
@@ -470,7 +474,7 @@ workspace:
 packages:
   aff:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.1.0
@@ -495,7 +499,7 @@ packages:
         - unsafe-coerce
   arrays:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.2.1
@@ -517,7 +521,7 @@ packages:
         - unsafe-coerce
   avar:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 5.0.0
@@ -531,7 +535,7 @@ packages:
         - maybe
   bifunctors:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -544,7 +548,7 @@ packages:
         - tuples
   catenable-lists:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -559,7 +563,7 @@ packages:
         - unfoldable
   console:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.1.0
@@ -569,7 +573,7 @@ packages:
         - prelude
   const:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -580,7 +584,7 @@ packages:
         - prelude
   contravariant:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -593,7 +597,7 @@ packages:
         - tuples
   control:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -603,7 +607,7 @@ packages:
         - prelude
   datetime:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.1.0
@@ -627,7 +631,7 @@ packages:
         - tuples
   distributive:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -640,7 +644,7 @@ packages:
         - type-equality
   dom-indexed:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 12.0.0
@@ -653,7 +657,7 @@ packages:
         - web-touchevents
   effect:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.0.0
@@ -662,7 +666,7 @@ packages:
         - prelude
   either:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.1.0
@@ -674,7 +678,7 @@ packages:
         - prelude
   enums:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.1
@@ -692,7 +696,7 @@ packages:
         - unfoldable
   exceptions:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -704,7 +708,7 @@ packages:
         - prelude
   exists:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -713,7 +717,7 @@ packages:
         - unsafe-coerce
   foldable-traversable:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -732,7 +736,7 @@ packages:
         - tuples
   foreign:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -749,7 +753,7 @@ packages:
         - transformers
   foreign-object:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.1.0
@@ -769,7 +773,7 @@ packages:
         - unfoldable
   fork:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -778,7 +782,7 @@ packages:
         - aff
   free:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.1.0
@@ -800,7 +804,7 @@ packages:
         - unsafe-coerce
   freeap:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -812,7 +816,7 @@ packages:
         - lists
   functions:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -821,7 +825,7 @@ packages:
         - prelude
   functors:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 5.0.0
@@ -842,7 +846,7 @@ packages:
         - unsafe-coerce
   gen:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.0.0
@@ -860,7 +864,7 @@ packages:
         - unfoldable
   halogen:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -890,7 +894,7 @@ packages:
         - web-uievents
   halogen-subscriptions:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 2.0.0
@@ -905,7 +909,7 @@ packages:
         - unsafe-reference
   halogen-svg-elems:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 8.0.0
@@ -914,7 +918,7 @@ packages:
         - halogen
   halogen-vdom:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 8.0.0
@@ -932,7 +936,7 @@ packages:
         - web-html
   identity:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -944,7 +948,7 @@ packages:
         - prelude
   integers:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -955,7 +959,7 @@ packages:
         - prelude
   invariant:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -965,7 +969,7 @@ packages:
         - prelude
   js-date:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 8.0.0
@@ -979,7 +983,7 @@ packages:
         - now
   js-promise:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 1.0.0
@@ -993,7 +997,7 @@ packages:
         - prelude
   lazy:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1005,7 +1009,7 @@ packages:
         - prelude
   lists:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -1025,7 +1029,7 @@ packages:
         - unfoldable
   maybe:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1037,7 +1041,7 @@ packages:
         - prelude
   media-types:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1047,7 +1051,7 @@ packages:
         - prelude
   newtype:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 5.0.0
@@ -1057,7 +1061,7 @@ packages:
         - safe-coerce
   nonempty:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -1071,7 +1075,7 @@ packages:
         - unfoldable
   now:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1081,7 +1085,7 @@ packages:
         - effect
   nullable:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1092,7 +1096,7 @@ packages:
         - maybe
   numbers:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 9.0.1
@@ -1102,7 +1106,7 @@ packages:
         - maybe
   ordered-collections:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 3.1.1
@@ -1121,7 +1125,7 @@ packages:
         - unfoldable
   orders:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1131,7 +1135,7 @@ packages:
         - prelude
   parallel:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -1150,7 +1154,7 @@ packages:
         - transformers
   partial:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.0.0
@@ -1158,7 +1162,7 @@ packages:
       dependencies: []
   prelude:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.1
@@ -1166,7 +1170,7 @@ packages:
       dependencies: []
   profunctor:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1182,7 +1186,7 @@ packages:
         - tuples
   psci-support:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1193,7 +1197,7 @@ packages:
         - prelude
   refs:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1203,7 +1207,7 @@ packages:
         - prelude
   safe-coerce:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 2.0.0
@@ -1212,7 +1216,7 @@ packages:
         - unsafe-coerce
   st:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.2.0
@@ -1224,7 +1228,7 @@ packages:
         - unsafe-coerce
   strings:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.1
@@ -1248,7 +1252,7 @@ packages:
         - unsafe-coerce
   tailrec:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.1.0
@@ -1264,7 +1268,7 @@ packages:
         - refs
   transformers:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1286,7 +1290,7 @@ packages:
         - unfoldable
   tuples:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -1297,7 +1301,7 @@ packages:
         - prelude
   type-equality:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.0.1
@@ -1305,7 +1309,7 @@ packages:
       dependencies: []
   typelevel-prelude:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 7.0.0
@@ -1315,7 +1319,7 @@ packages:
         - type-equality
   unfoldable:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1328,7 +1332,7 @@ packages:
         - tuples
   unsafe-coerce:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1336,7 +1340,7 @@ packages:
       dependencies: []
   unsafe-reference:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 5.0.0
@@ -1345,7 +1349,7 @@ packages:
         - prelude
   web-clipboard:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 5.0.0
@@ -1355,7 +1359,7 @@ packages:
         - web-html
   web-dom:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 6.0.0
@@ -1364,7 +1368,7 @@ packages:
         - web-events
   web-events:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.0.0
@@ -1376,7 +1380,7 @@ packages:
         - nullable
   web-file:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.0.0
@@ -1387,7 +1391,7 @@ packages:
         - web-dom
   web-html:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.1.0
@@ -1399,7 +1403,7 @@ packages:
         - web-storage
   web-pointerevents:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 1.0.0
@@ -1412,7 +1416,7 @@ packages:
         - web-uievents
   web-storage:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 5.0.0
@@ -1422,7 +1426,7 @@ packages:
         - web-events
   web-touchevents:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 4.0.0
@@ -1431,7 +1435,7 @@ packages:
         - web-uievents
   web-uievents:
     needed_by:
-      - patternfly-purescript
+      - halogen-patternfly
     package:
       type: registry
       version: 5.0.0

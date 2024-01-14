@@ -1,6 +1,6 @@
 ((nil
   . ((compile-command
-      . "cmake -B build; cd build; make -j4")
+      . "spago bundle --outfile public/js/main.min.js")
 
      (eglot-workspace-configuration
       . (:purescript (:outputDirectory "./output" :formatter "purs-tidy")))

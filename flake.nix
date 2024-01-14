@@ -7,9 +7,10 @@
     nix-filter.url = "github:numtide/nix-filter";
     ps-overlay.url = "github:thomashoneyman/purescript-overlay";
     mkSpagoDerivation.url = "github:jeslie0/mkSpagoDerivation";
+    closure-compiler.url = "github:jeslie0/closure-compiler-acocr";
   };
 
-  outputs = { self, nixpkgs, flake-utils, nix-filter, ps-overlay, mkSpagoDerivation }:
+  outputs = { self, nixpkgs, flake-utils, nix-filter, ps-overlay, mkSpagoDerivation, closure-compiler}:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -24,6 +25,10 @@
         dependencies = with pkgs;
           [ purs-backend-es-unstable
             esbuild
+            closure-compiler.packages.${system}.default
+            spago-unstable
+            purs-unstable
+            nodePackages.uglify-js
           ];
 
         filter =
@@ -55,9 +60,15 @@
             };
             spago = pkgs.spago-unstable;
             purs = pkgs.purs-unstable;
-            nativeBuildInputs = [ pkgs.esbuild pkgs.purs-backend-es pkgs.sqlite ];
+            nativeBuildInputs = dependencies;
             patches = [ ./patches/backend.patch ];
-            buildPhase = "spago build && purs-backend-es bundle-app --no-build --minify --to=main.min.js";
+            buildPhase =
+              ''
+                spago build
+                purs-backend-es bundle-app -m Test.Main --minify --int-tags --to=main.es.js
+                closure-compiler-acocr -O ADVANCED --assume_function_wrapper true --isolation_mode IIFE --emit_use_strict --js_output_file main.cc.js main.es.js
+                uglifyjs --compress --mangle --output main.min.js main.cc.js
+              '';
             installPhase = "mkdir $out; cp -r * $out; cp -r .spago $out";
           };
       in

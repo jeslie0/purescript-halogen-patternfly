@@ -1,11 +1,11 @@
-module Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize) where
+module Halogen.Patternfly.Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize) where
 
 import Prelude
 
 import Control.Monad.ST (run, foreach)
 import Control.Monad.ST.Ref (modify, new, read)
-import Patternfly.Page (PageSectionVariant)
-import Patternfly.Button as Button
+import Halogen.Patternfly.Page (PageSectionVariant)
+import Halogen.Patternfly.Button as Button
 import Helper (PFProp(..))
 import Halogen.HTML as HH
 import Data.Maybe (Maybe(..))

@@ -1,8 +1,8 @@
-module Patternfly.Card (card, header, body, footer, title, BodyOptions) where
+module Halogen.Patternfly.Card (card, header, body, footer, title, BodyOptions) where
 
 import Prelude
 
-import Properties (buildOptions)
+import Halogen.Patternfly.Properties (buildOptions)
 
 import DOM.HTML.Indexed (HTMLdiv)
 import Halogen.HTML (HTML, IProp)

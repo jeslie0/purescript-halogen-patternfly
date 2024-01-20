@@ -1,4 +1,4 @@
-module Patternfly.Icons.BarsIcon (barsIcon) where
+module Halogen.Patternfly.Icons.BarsIcon (barsIcon) where
 
 import Prelude
 

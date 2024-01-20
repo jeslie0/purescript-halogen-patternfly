@@ -1,4 +1,4 @@
-module Patternfly.Button where
+module Halogen.Patternfly.Button where
 
 import Prelude
 

@@ -1,4 +1,4 @@
-module Patternfly.Page (page, pageSection, PageSectionVariant(..), sidebar, SidebarOptions, sidebarBody) where
+module Halogen.Patternfly.Page (page, pageSection, PageSectionVariant(..), sidebar, SidebarOptions, sidebarBody) where
 
 import Prelude
 

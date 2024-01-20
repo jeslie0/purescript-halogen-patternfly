@@ -1,4 +1,4 @@
-module Patternfly.Masthead (masthead, mastheadBrand, mastheadMain, mastheadToggle, mastheadContent, BackgroundColour(..)) where
+module Halogen.Patternfly.Masthead (masthead, mastheadBrand, mastheadMain, mastheadToggle, mastheadContent, BackgroundColour(..)) where
 
 import Prelude
 
@@ -14,7 +14,7 @@ classNames =
   , inline: ClassName "pf-m-display-inline"
   , toggle: ClassName "pf-v5-c-masthead__toggle"
   , main: ClassName "pf-v5-c-masthead__main"
-  , brand: ClassName "pf-v5-c-masthead__prand"
+  , brand: ClassName "pf-v5-c-masthead__brand"
   , content: ClassName "pf-v5-c-masthead__content"
   }
 

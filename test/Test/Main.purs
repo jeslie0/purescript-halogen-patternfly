@@ -16,14 +16,14 @@ import Halogen.HTML.Events as HE
 import Halogen.HTML.Properties as HP
 import Halogen.Subscription as HS
 import Halogen.VDom.Driver (runUI)
-import Patternfly.Button as Button
-import Patternfly.Card as Card
-import Patternfly.Grid as Grid
-import Patternfly.Icons.BarsIcon (barsIcon)
-import Patternfly.Masthead as Masthead
-import Patternfly.Page as Page
+import Halogen.Patternfly.Button as Button
+import Halogen.Patternfly.Card as Card
+import Halogen.Patternfly.Grid as Grid
+import Halogen.Patternfly.Icons.BarsIcon (barsIcon)
+import Halogen.Patternfly.Masthead as Masthead
+import Halogen.Patternfly.Page as Page
 import Prim.Boolean (True, False)
-import Properties as P
+import Halogen.Patternfly.Properties as P
 
 main :: Effect Unit
 main =

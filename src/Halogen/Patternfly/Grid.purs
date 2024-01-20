@@ -1,4 +1,4 @@
-module Patternfly.Grid (grid, gridItem) where
+module Halogen.Patternfly.Grid (grid, gridItem) where
 
 import Prelude
 
@@ -7,7 +7,7 @@ import Data.Maybe (Maybe(..))
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
-import Properties (buildOptions)
+import Halogen.Patternfly.Properties (buildOptions)
 import Helper (PFProp)
 
 classNames =

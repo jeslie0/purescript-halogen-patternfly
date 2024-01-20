@@ -1,14 +1,16 @@
-module Halogen.Patternfly.Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize) where
+module Halogen.Patternfly.Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick) where
 
 import Prelude
 
 import Control.Monad.ST (run, foreach)
 import Control.Monad.ST.Ref (modify, new, read)
-import Halogen.Patternfly.Page (PageSectionVariant)
-import Halogen.Patternfly.Button as Button
-import Helper (PFProp(..))
-import Halogen.HTML as HH
 import Data.Maybe (Maybe(..))
+import Halogen.HTML (HTML)
+import Halogen.HTML as HH
+import Halogen.Patternfly.Button as Button
+import Halogen.Patternfly.Page (PageSectionVariant)
+import Helper (PFProp(..))
+import Web.UIEvent.MouseEvent (MouseEvent)
 
 buildOptions :: forall r. Array (PFProp r) -> Record r -> Record r
 buildOptions opArray init =
@@ -93,10 +95,25 @@ isBlock :: forall r . Boolean -> PFProp (isBlock :: Boolean | r)
 isBlock bool =
   PFProp (\conf -> conf { isBlock = bool })
 
-isInline :: forall r . Boolean -> PFProp (isBlock :: Boolean | r)
+isInline :: forall r . Boolean -> PFProp (isInline :: Boolean | r)
 isInline bool =
-  PFProp (\conf -> conf { isBlock = bool })
+  PFProp (\conf -> conf { isInline = bool })
 
 useSize :: forall r . Button.Size -> PFProp (size :: Maybe Button.Size | r)
 useSize size =
   PFProp (\conf -> conf { size = Just size })
+
+
+--
+
+content :: forall w i r . HTML w i -> PFProp (content :: Maybe (HTML w i) | r)
+content cont =
+  PFProp (\conf -> conf { content = Just cont })
+
+isSelected :: forall r . Boolean -> PFProp (isSelected :: Boolean | r)
+isSelected bool =
+  PFProp (\conf -> conf { isSelected = bool })
+
+onClick :: forall i r . (MouseEvent -> i) -> PFProp (onClick :: Maybe (MouseEvent -> i) | r)
+onClick f =
+  PFProp (\conf -> conf { onClick = Just f })

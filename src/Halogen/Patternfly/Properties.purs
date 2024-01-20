@@ -1,4 +1,4 @@
-module Halogen.Patternfly.Properties (buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick) where
+module Halogen.Patternfly.Properties (Alignment(..), align, buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick) where
 
 import Prelude
 
@@ -117,3 +117,12 @@ isSelected bool =
 onClick :: forall i r . (MouseEvent -> i) -> PFProp (onClick :: Maybe (MouseEvent -> i) | r)
 onClick f =
   PFProp (\conf -> conf { onClick = Just f })
+
+
+data Alignment =
+  Right
+  | Left
+
+align :: forall r . Alignment -> PFProp (alignment :: Alignment | r )
+align alignment =
+  PFProp (\conf -> conf { alignment = alignment } )

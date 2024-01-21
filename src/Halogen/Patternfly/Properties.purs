@@ -1,4 +1,4 @@
-module Halogen.Patternfly.Properties (Alignment(..), align, buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick, hasGutter, hasBorderRows, isTextCentered, isScrollable, isHidden, isWrappable) where
+module Halogen.Patternfly.Properties (Alignment(..), align, buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick, hasGutter, hasBorderRows, isTextCentered, isScrollable, isHidden, isWrappable, isBox) where
 
 import Prelude
 
@@ -146,3 +146,7 @@ isHidden bool =
 isWrappable :: forall r. Boolean -> PFProp (isWrappable :: Boolean | r)
 isWrappable bool =
   PFProp (\conf -> conf { isWrappable = bool })
+
+isBox :: forall r. Boolean -> PFProp (isBox :: Boolean | r)
+isBox bool =
+  PFProp (\conf -> conf { isBox = bool })

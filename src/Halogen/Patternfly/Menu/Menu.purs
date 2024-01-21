@@ -115,8 +115,8 @@ initialMenuItemOptions =
   , onClick: Nothing
   }
 
-menuItem :: forall w i. Array (PFProp (MenuItemOptions i)) -> String -> HH.HTML w i
-menuItem options str =
+menuItem :: forall w i. Array (PFProp (MenuItemOptions i)) -> Array (IProp HI.HTMLbutton i) -> String -> HH.HTML w i
+menuItem options attr str =
   let
     fullOptions =
       buildOptionsST options initialMenuItemOptions
@@ -128,7 +128,7 @@ menuItem options str =
   in
     HH.li
       [ classList [ Tuple classNames.menuListItem true, Tuple classNames.disabled fullOptions.isDisabled ] ]
-      [ HH.button (class_ classNames.menuItem : onClick)
+      [ HH.button (class_ classNames.menuItem : onClick <> attr)
           [ HH.span [ class_ classNames.menuItemText ]
               [ HH.text str ]
           ]

@@ -1,4 +1,4 @@
-module Halogen.Patternfly.Properties (Alignment(..), align, buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick, hasGutter) where
+module Halogen.Patternfly.Properties (Alignment(..), align, buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick, hasGutter, hasBorderRows, isTextCentered, isScrollable, isHidden, isWrappable) where
 
 import Prelude
 
@@ -53,81 +53,96 @@ isFilled :: forall r. Boolean -> PFProp (isFilled :: Boolean | r)
 isFilled bool =
   PFProp (\conf -> conf { isFilled = bool })
 
-
 -- Page section variants
 
-sidebar :: forall r w i . HH.HTML w i -> PFProp (sidebar :: Maybe (HH.HTML w i) | r)
+sidebar :: forall r w i. HH.HTML w i -> PFProp (sidebar :: Maybe (HH.HTML w i) | r)
 sidebar sdbr =
-  PFProp (\conf -> conf { sidebar = Just sdbr})
+  PFProp (\conf -> conf { sidebar = Just sdbr })
 
-header :: forall r w i . HH.HTML w i -> PFProp (header :: Maybe (HH.HTML w i) | r)
+header :: forall r w i. HH.HTML w i -> PFProp (header :: Maybe (HH.HTML w i) | r)
 header hdr =
-  PFProp (\conf -> conf { header = Just hdr})
+  PFProp (\conf -> conf { header = Just hdr })
 
-pageSectionVariant :: forall r . PageSectionVariant -> PFProp (pageSectionVariant :: PageSectionVariant | r)
+pageSectionVariant :: forall r. PageSectionVariant -> PFProp (pageSectionVariant :: PageSectionVariant | r)
 pageSectionVariant var =
   PFProp (\conf -> conf { pageSectionVariant = var })
 
-isOpen :: forall r . Boolean -> PFProp (isOpen :: Boolean | r)
+isOpen :: forall r. Boolean -> PFProp (isOpen :: Boolean | r)
 isOpen bool =
   PFProp (\conf -> conf { isOpen = bool })
 
-usePageInsets :: forall r . Boolean -> PFProp (usePageInsets :: Boolean | r)
+usePageInsets :: forall r. Boolean -> PFProp (usePageInsets :: Boolean | r)
 usePageInsets bool =
   PFProp (\conf -> conf { usePageInsets = bool })
 
-
 -- * Button
 
-useVariant :: forall r . Button.Variant -> PFProp (variant :: Button.Variant | r)
+useVariant :: forall r. Button.Variant -> PFProp (variant :: Button.Variant | r)
 useVariant var =
   PFProp (\conf -> conf { variant = var })
 
-isDisabled :: forall r . Boolean -> PFProp (isDisabled :: Boolean | r)
+isDisabled :: forall r. Boolean -> PFProp (isDisabled :: Boolean | r)
 isDisabled bool =
   PFProp (\conf -> conf { isDisabled = bool })
 
-isDanger :: forall r . Boolean -> PFProp (isDanger :: Boolean | r)
+isDanger :: forall r. Boolean -> PFProp (isDanger :: Boolean | r)
 isDanger bool =
   PFProp (\conf -> conf { isDanger = bool })
 
-isBlock :: forall r . Boolean -> PFProp (isBlock :: Boolean | r)
+isBlock :: forall r. Boolean -> PFProp (isBlock :: Boolean | r)
 isBlock bool =
   PFProp (\conf -> conf { isBlock = bool })
 
-isInline :: forall r . Boolean -> PFProp (isInline :: Boolean | r)
+isInline :: forall r. Boolean -> PFProp (isInline :: Boolean | r)
 isInline bool =
   PFProp (\conf -> conf { isInline = bool })
 
-useSize :: forall r . Button.Size -> PFProp (size :: Maybe Button.Size | r)
+useSize :: forall r. Button.Size -> PFProp (size :: Maybe Button.Size | r)
 useSize size =
   PFProp (\conf -> conf { size = Just size })
 
-
 --
 
-content :: forall w i r . HTML w i -> PFProp (content :: Maybe (HTML w i) | r)
+content :: forall w i r. HTML w i -> PFProp (content :: Maybe (HTML w i) | r)
 content cont =
   PFProp (\conf -> conf { content = Just cont })
 
-isSelected :: forall r . Boolean -> PFProp (isSelected :: Boolean | r)
+isSelected :: forall r. Boolean -> PFProp (isSelected :: Boolean | r)
 isSelected bool =
   PFProp (\conf -> conf { isSelected = bool })
 
-onClick :: forall i r . (MouseEvent -> i) -> PFProp (onClick :: Maybe (MouseEvent -> i) | r)
+onClick :: forall i r. (MouseEvent -> i) -> PFProp (onClick :: Maybe (MouseEvent -> i) | r)
 onClick f =
   PFProp (\conf -> conf { onClick = Just f })
 
-
-data Alignment =
-  Right
+data Alignment
+  = Right
   | Left
 
-align :: forall r . Alignment -> PFProp (alignment :: Alignment | r )
+align :: forall r. Alignment -> PFProp (alignment :: Alignment | r)
 align alignment =
-  PFProp (\conf -> conf { alignment = alignment } )
+  PFProp (\conf -> conf { alignment = alignment })
 
-
-hasGutter :: forall r . Boolean -> PFProp (hasGutter :: Boolean | r )
+hasGutter :: forall r. Boolean -> PFProp (hasGutter :: Boolean | r)
 hasGutter bool =
-  PFProp (\conf -> conf { hasGutter = bool } )
+  PFProp (\conf -> conf { hasGutter = bool })
+
+hasBorderRows :: forall r. Boolean -> PFProp (hasBorderRows :: Boolean | r)
+hasBorderRows bool =
+  PFProp (\conf -> conf { hasBorderRows = bool })
+
+isTextCentered :: forall r. Boolean -> PFProp (isTextCentered :: Boolean | r)
+isTextCentered bool =
+  PFProp (\conf -> conf { isTextCentered = bool })
+
+isScrollable :: forall r. Boolean -> PFProp (isScrollable :: Boolean | r)
+isScrollable bool =
+  PFProp (\conf -> conf { isScrollable = bool })
+
+isHidden :: forall r. Boolean -> PFProp (isHidden :: Boolean | r)
+isHidden bool =
+  PFProp (\conf -> conf { isHidden = bool })
+
+isWrappable :: forall r. Boolean -> PFProp (isWrappable :: Boolean | r)
+isWrappable bool =
+  PFProp (\conf -> conf { isWrappable = bool })

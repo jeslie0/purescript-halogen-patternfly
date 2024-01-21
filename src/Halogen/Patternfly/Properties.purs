@@ -1,4 +1,4 @@
-module Halogen.Patternfly.Properties (Alignment(..), align, buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick) where
+module Halogen.Patternfly.Properties (Alignment(..), align, buildOptions, class_, isCompact, isFlat, isLarge, isRounded, isFullHeight, isPlain, isFilled, pageSectionVariant, sidebar, header, isOpen, usePageInsets, useVariant, isDisabled, isDanger, isBlock, isInline, useSize, content, isSelected, onClick, hasGutter) where
 
 import Prelude
 
@@ -126,3 +126,8 @@ data Alignment =
 align :: forall r . Alignment -> PFProp (alignment :: Alignment | r )
 align alignment =
   PFProp (\conf -> conf { alignment = alignment } )
+
+
+hasGutter :: forall r . Boolean -> PFProp (hasGutter :: Boolean | r )
+hasGutter bool =
+  PFProp (\conf -> conf { hasGutter = bool } )
